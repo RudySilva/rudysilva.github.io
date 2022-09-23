@@ -26,6 +26,7 @@ body {
     flex-direction: row;
     display:flexbox;
     justify-content: center;
+    border: 1px solid;
 }
 
 .board-row:after {
@@ -42,3 +43,19 @@ body {
     height: 50px;
     margin: 50px;
 }
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .square {
+        background: #fff;
+        border: 1px solid #999;
+        float: left;
+        font-size:3em;
+        line-height:5rem;
+        height: 5rem;    
+        width: 5rem;
+        margin-right: -1px;
+        margin-left: -1px;
+        padding: 0;
+    }
+  }
