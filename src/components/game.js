@@ -1,6 +1,7 @@
 import React from 'react';
 import Board from './board';
 import calculateWinner from '../functions/calculateWinner';
+import logo from '../img/tic-tac-toe.png';
 
 export default class Game extends React.Component {
     constructor(props) {
@@ -63,6 +64,9 @@ export default class Game extends React.Component {
         }        
         return (
             <div className="game">
+                <div className="header">
+                    <img src={logo} className="logo" alt="tic-tac-toe" />
+                </div>
                 <div className="game-board">
                     <Board 
                         squares={current.squares}
@@ -70,9 +74,10 @@ export default class Game extends React.Component {
                     />
                 </div>
                 <div className="game-info">
-                    <div className="status">{status}</div>
+                    <div className="title history">History</div>
                     <ol>{moves}</ol>
                 </div>
+                <div className="title status">{status}</div>
             </div>
         );
     }
