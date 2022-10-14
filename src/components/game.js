@@ -1,8 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, createContext, useContext } from 'react';
 import Board from './board';
 import calculateWinner from '../functions/calculateWinner';
 import logo from '../img/tic-tac-toe.png';
 
+export const GameContext = createContext();
+
+const Game = () => {
+    const [squares, setSquares] = useState(Array(9).fill(null));
+    const [history, setHistory] = useState(squares);
+    const [xIsNext, setXIsNext] = useState(true);
+    const [stepNumber, setStepNumber] = useState(0);
+
+    return (
+        
+            <div className="game">
+                <div className="header">
+                    <img src={logo} className="logo" alt="tic-tac-toe" />
+                </div>
+                <div className="game-board">
+                    <GameContext.Provider value={{squares}}>
+                        <Board 
+                            squares={squares}
+                            // onClick={(i) => this.handleClick(i)}
+                        />
+                    </GameContext.Provider>
+                </div>
+                <div className="game-info">
+                    <div className="title history">History</div>
+                    {/* <ol>{moves}</ol> */}
+                </div>
+                {/* <div className="title status">{status}</div> */}
+            </div>
+        
+    );
+}
+
+export default Game;
 
 /*
 export default class Game extends React.Component {
@@ -110,28 +143,5 @@ const handleClick = (i) => {
     // });
 }
 
-const Game = () => {
-    const [xIsNext, setXisNext] = useState(true);
 
-    return (
-        <div className="game">
-            <div className="header">
-                <img src={logo} className="logo" alt="tic-tac-toe" />
-            </div>
-            <div className="game-board">
-                <Board 
-                    // squares={current.squares}
-                    // onClick={(i) => this.handleClick(i)}
-                />
-            </div>
-            <div className="game-info">
-                <div className="title history">History</div>
-                {/* <ol>{moves}</ol> */}
-            </div>
-            {/* <div className="title status">{status}</div> */}
-        </div>
-    );
-}
-
-export default Game;
 

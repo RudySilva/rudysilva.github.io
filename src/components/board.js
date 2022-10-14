@@ -1,5 +1,42 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Square from '../functions/square';
+import { GameContext } from './game';
+
+
+const RenderSquare = (i) => {
+    const game = useContext(GameContext);
+    return (
+        <Square 
+            value={game.squares[i]} 
+            // value={i} 
+       />
+    );
+}
+
+const Board = () => {
+    
+    return (
+        <div className="board">
+            <div className="board-row">
+                {RenderSquare(0)}
+                {RenderSquare(1)}
+                {RenderSquare(2)}
+            </div>
+            <div className="board-row">
+                {RenderSquare(3)}
+                {RenderSquare(4)}
+                {RenderSquare(5)}
+            </div>
+            <div className="board-row">
+                {RenderSquare(6)}
+                {RenderSquare(7)}
+                {RenderSquare(8)}
+            </div>                        
+        </div>
+    );
+}
+
+export default Board;
 
 // class Board extends React.Component {
 
@@ -35,35 +72,3 @@ import Square from '../functions/square';
 //     }
 // }
 
-const renderSquare = (i) => {
-        return (
-            <Square 
-                value={i} 
-           />
-        );
-}
-
-const Board = () => {
-    return (
-        <div className="board">
-            <div className="board-row">
-                {renderSquare(0)}
-                {renderSquare(1)}
-                {renderSquare(2)}
-            </div>
-            <div className="board-row">
-                {renderSquare(3)}
-                {renderSquare(4)}
-                {renderSquare(5)}
-            </div>
-            <div className="board-row">
-                {renderSquare(6)}
-                {renderSquare(7)}
-                {renderSquare(8)}
-            </div>                        
-        </div>
-    );
-   
-}
-
-export default Board;
